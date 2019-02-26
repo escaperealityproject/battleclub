@@ -3,8 +3,7 @@ var express = require('express'), app = express(),
     passport = require('passport'), LocalStrategy = require('passport-local'),
     passportLocalMongoose = require('passport-local-mongoose'),
     router = express.Router({mergeParams: true});
-    const keys = require('./config/keys');
-
+const keys = require('./config/keys');
 
 // ----------
 // APP CONFIG
@@ -28,8 +27,20 @@ var blogSchema = new mongoose.Schema({
   hero_image: String,
   body: String,
   created: {type: Date, default: Date.now}
-})
+});
 var Blog = mongoose.model('Blog', blogSchema);
+
+// Security schema
+var securitySchema = new mongoose.Schema({key: Number});
+var Security = mongoose.model('Security', securitySchema);
+
+// ----------
+// MONGOOSE contact CONFIG
+// ----------
+
+var contactSchema =
+    new mongoose.Schema({name: String, email: String, number: String});
+var Contact = mongoose.model('Contact', contactSchema);
 
 // ----------
 // MONGOOSE REVIEW CONFIG
@@ -41,7 +52,7 @@ var reviewSchema = new mongoose.Schema({
   image: String,
   body: String,
   created: {type: Date, default: Date.now}
-})
+});
 var Review = mongoose.model('Review', reviewSchema);
 
 // ----------
@@ -59,7 +70,7 @@ User = mongoose.model('User', UserSchema);
 // ----------
 
 app.use(require('express-session')(
-    {secret: 'Battle Club WF5', resave: false, saveUninitialized: false}));
+    {secret: keys.secret, resave: false, saveUninitialized: false}));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -71,6 +82,8 @@ app.use(function(req, res, next) {
   res.locals.currentUser = req.user;
   next();
 });
+
+// test
 
 // ----------
 // ROUTES
@@ -85,18 +98,27 @@ app.get('/', function(req, res) {
     else {
       res.render('landing', {blogs: foundBlog});
     }
-  })
+  });
+});
+
+// contact us submit
+app.post('/contact', function(req, res) {
+  console.log(req.body);
+  Contact.create(
+      {name: req.body.name, number: req.body.number, email: req.body.email},
+      function(err, newContact) {
+        if (err) {
+          console.log('Error'), res.redirect('/');
+        } else {
+          res.redirect('/');
+        }
+      });
 });
 
 // TEST ROUTE
 app.get('/test', function(req, res) {
-  Blog.find({}, function(err, foundBlog) {
-    if (err)
-      console.log('Error at /test');
-    else {
-      res.render('test', {blogs: foundBlog});
-    }
-  })
+  Security.findOne({}, (err, found) => console.log(found.key));
+  res.send('Test Route');
 });
 
 // SHOW BLOGS
@@ -108,7 +130,7 @@ app.get('/blogs', function(req, res) {
     } else {
       res.render('blogs', {blogs: blogs});
     }
-  })
+  });
 });
 
 // SHOW SPECIFIC BLOG
@@ -120,8 +142,8 @@ app.get('/blogs/:id', function(req, res) {
     } else {
       res.render('show', {blog: foundBlog});
     }
-  })
-})
+  });
+});
 
 // REVIEWS  PAGE
 
@@ -132,7 +154,7 @@ app.get('/review', function(req, res) {
     else {
       res.render('review', {reviews: foundReview});
     }
-  })
+  });
 });
 // LOGIN FORM
 
@@ -145,32 +167,42 @@ app.get('/admin', function(req, res) {
 app.post(
     '/admin',
     passport.authenticate(
-        'local', {successRedirect: '/blogs', faliureRedirect: '/admin'}),
+        'local', {successRedirect: '/', faliureRedirect: '/admin'}),
     function(req, res) {});
 
-// //REGISTER FORM
-//
-// app.get("/register", function(req, res) {
-//     res.render("register");
-// });
-//
-// //REGISTER LOGIC
-//
-// app.post("/register", function(req, res) {
-//     var newUser = new User({
-//         username: req.body.username
-//     });
-//     User.register(newUser, req.body.password, function(err, user) {
-//         if (err) {
-//             console.log(err);
-//             return res.render("register");
-//         }
-//         passport.authenticate("login")(req, res, function() {
-//             console.log("Registered Succesfully");
-//             res.redirect("/blogs");
-//         })
-//     })
-// })
+// REGISTER FORM
+
+app.get('/register', function(req, res) {
+  Security.findOne({}, (err, found) => {
+    if (found.key == 1) {
+      res.render('register');
+    } else {
+      res.send('Unauthorized')
+    }
+  })
+});
+
+// REGISTER LOGIC
+
+app.post('/register', function(req, res) {
+  Security.findOne({}, (err, found) => {
+    if (found.key == 1) {
+      var newUser = new User({username: req.body.username});
+      User.register(newUser, req.body.password, function(err, user) {
+        if (err) {
+          console.log(err);
+          return res.render('register');
+        }
+        passport.authenticate('login')(req, res, function() {
+          console.log('Registered Succesfully');
+          res.redirect('/blogs');
+        });
+      });
+    } else {
+      res.send('Unauthorized')
+    }
+  })
+});
 
 // LOGOUT LOGIC
 
@@ -181,6 +213,18 @@ app.get('/logout', function(req, res) {
 });
 
 app.use(isLoggedIn);
+
+// get contact info
+
+app.get('/admin/contact', (req, res) => {
+  Contact.find({}, (err, contacts) => {
+    if (err) {
+      console.log('error accessing contacts');
+    } else {
+      res.send(contacts);
+    }
+  });
+});
 
 // ADD NEW BLOG FORM
 
@@ -231,7 +275,6 @@ app.post('/admin/review', function(req, res) {
       });
 });
 
-
 // EDIT BLOG FORM
 
 app.get('/admin/blogs/:id/edit', function(req, res) {
@@ -242,7 +285,7 @@ app.get('/admin/blogs/:id/edit', function(req, res) {
     } else {
       res.render('edit', {blog: foundBlog});
     }
-  })
+  });
 });
 
 // EDIT BLOG ACTION
@@ -275,10 +318,8 @@ app.get('/admin/blogs/:id/delete', function(req, res) {
     } else {
       res.redirect('/blogs');
     }
-  })
+  });
 });
-
-
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
