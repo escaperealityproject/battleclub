@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+
+    <%# <link rel="stylesheet" href="css/icon-font.css"> %>
+    <link rel="stylesheet" href="/stylesheets/landing.css">
+    <%# <link rel="shortcut icon" type="image/png" href="img/favicon.png"> %>
+    <title>Battle Club</title>
+</head>
+
+<body>
+    <!-- <div class="header__logo-box"> -->
+        <a href="/">
+            <img src="/images/logo-white.png" alt="Battle Club" class="header__logo">
+        </a>
+    <!-- </div> -->
+    <header class="header">
+        <div class="header__text-box">
+            <h1 class="heading-primary">
+                <span class="heading-primary--main">
+                        <%= blog.title %>
+                    </span>
+                    <span class="heading-primary--sub">
+                            <%= blog.caption %>
+                </span>
+            </h1>
+        </div>
+    </header>
+<main>
+        <section class="section-about">
+            <div class="row">
+                <div class="col-1-of-1">
+                    <p class="paragraph">
+                            <%= blog.body %>
+                    </p>
+                </div>
+        </main>
+        <footer class="footer">
+                <div class="u-center-text u-margin-bottom-big">
+                    <h2 class="heading-secondary">
+                        Ways to connect!
+                    </h2>
+                </div>
+                <div class="row">
+                    <div class="story">
+                        <div class="story__text">
+                            <h3 class="heading-tertiary u-margin-bottom-small" style="text-align:center">
+                                email : battleclub55@gmail.com
+                                <br>
+                                Phone : 8752649356
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <row>
+                </row>
+            </footer>
+        </body>
+        </html>

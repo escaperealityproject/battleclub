@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+
+    <%# <link rel="stylesheet" href="css/icon-font.css"> %>
+    <link rel="stylesheet" href="/stylesheets/landing.css">
+    <%# <link rel="shortcut icon" type="image/png" href="img/favicon.png"> %>
+    <title>Battle Club</title>
+    <%# <script src="/scripts/siema.js"></script> %>
+</head>
+
+<body>
+    <div class="header__logo-box">
+        <a href="/">
+            <img src="/images/logo-white.png" alt="Battle Club" class="header__logo">
+        </a>
+    </div>
+    <header class="header">
+        <div class="header__text-box">
+            <h1 class="heading-primary">
+                <span class="heading-primary--main">
+                    Battle Club
+                </span>
+                <span class="heading-primary--sub">
+                    Unleash your inner beast
+                </span>
+            </h1>
+            <a href="/blogs" class="btn btn--white">
+                Watch us in action!
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="section-about">
+            <div class="u-center-text u-margin-bottom-big">
+                <h2 class="heading-secondary">
+                    About Us
+                </h2>
+            </div>
+            <div class="row">
+                <div class="u-center-text">
+
+                    <div class="siema">
+                        <%    blogs.forEach(function(blog){ %>
+                        <div>
+                            <img class="" src="<%=blog.hero_image%>" />
+                        </div>
+                        <%  })  %>
+                    </div>
+                </div>
+            </div>
+            <script src="/scripts/siema.min.js"></script>
+            <script>
+                const mySiema = new Siema({
+                    selector: '.siema',
+                    duration: 1000,
+                    easing: 'ease-out',
+                    perPage: 1,
+                    draggable: true,
+                    multipleDrag: true,
+                    loop: true,
+                    easing: 'cubic-bezier(.17,.67,.32,1.34)'
+                })
+
+                setInterval(() => mySiema.next(), 3000)
+            </script>
+        </section>
+</body>
+
+</html>

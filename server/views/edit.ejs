@@ -1,0 +1,9 @@
+<h1>Edit Blog</h1>
+
+<form class="" action="/admin/blogs/<%=    blog._id    %>/edit" method="post">
+  <input type="text" name="title" value="<%=    blog.title    %>" />
+  <input type="text" name="caption" value="<%=    blog.caption    %>" />
+  <input type="text" name="image" value="<%=    blog.hero_image    %>" />
+  <textarea name="body"><%=    blog.body    %></textarea>
+  <input type="submit" name="" value="Submit" />
+</form>

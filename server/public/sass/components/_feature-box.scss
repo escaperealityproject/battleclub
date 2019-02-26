@@ -1,0 +1,21 @@
+.feature-box{
+    background-color: rgba($color-background-light,.8);
+    font-size: 1.5rem;
+    padding: 2.5rem;
+    text-align: center;
+    vertical-align: center;
+    border: 5px;
+    box-shadow: 0 2rem 4rem rgba($color-black, .3);
+    transition: transform .3s;
+    &__image{
+
+    }
+
+    &:hover{
+        transform: translateY(-1.5rem) scale(1.1);
+    }
+
+    &__text{
+
+    }
+}
