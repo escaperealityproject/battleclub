@@ -1,82 +1,96 @@
 .heading-primary {
-    color: $color-white;
-    text-transform: uppercase;
-    margin-bottom: 3.5rem;
+  color: $color-white;
+  text-transform: uppercase;
+  margin-bottom: 3.5rem;
 
+  &--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 700;
+    letter-spacing: 3rem;
+    animation-name: moveInLeft;
+    animation-duration: 0.9s;
 
-
-    &--main {
-        display: block;
-        font-size: 6rem;
-        font-weight: 700;
-        letter-spacing: 3rem;
-        animation-name: moveInLeft;
-        animation-duration: 0.9s;
-
-        @include respond(phone){
-            letter-spacing: 1rem;
-            font-size: 5rem;
-        }
+    @include respond(phone) {
+      letter-spacing: 1rem;
+      font-size: 5rem;
     }
+  }
 
-    &--sub {
-        display: block;
-        font-size: 2.7rem;
-        font-weight: 400;
-        letter-spacing: 1.2rem;
-        animation-name: moveInRight;
-        animation-duration: 0.9s;
+  &--sub {
+    display: block;
+    font-size: 2.7rem;
+    font-weight: 400;
+    letter-spacing: 1.2rem;
+    animation-name: moveInRight;
+    animation-duration: 0.9s;
 
-        @include respond(phone){
-            letter-spacing: .5rem;
-            // font-size: 5rem;
-        }
+    @include respond(phone) {
+      letter-spacing: 0.5rem;
+      // font-size: 5rem;
     }
+  }
 }
 
 body {
-    font-family: lato, arial;
-    font-weight: 400;
-    /* font-size: 16px; */
-    line-height: 1.7;
-    color: #ccc;
-    // padding: 3rem;
-    background-color: $color-background;
+  font-family: lato, arial;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: #ccc;
+  // padding: 3rem;
+  background-color: $color-background;
 }
 
-.heading-secondary{
-    font-size: 3.5rem;
-    text-transform: uppercase;
-    font-weight: 700;
-    display: inline-block;
-    background-image: linear-gradient(to right, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8));
-    -webkit-background-clip: text;
-    color: rgba(0,0,0,0);
-    letter-spacing: .2rem;
-    transition: all .3s;
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(
+    to right,
+    rgba($color-primary-light, 0.8),
+    rgba($color-primary-dark, 0.8)
+  );
+  -webkit-background-clip: text;
+  color: rgba(0, 0, 0, 0);
+  letter-spacing: 0.2rem;
+  transition: all 0.3s;
 
-    @include respond(tab-port){
-        font-size: 3rem;
-    }
-    @include respond(phone){
-        font-size: 2.5rem;
-    }
+  @include respond(tab-port) {
+    font-size: 3rem;
+  }
+  @include respond(phone) {
+    font-size: 2.5rem;
+  }
 
-    &:hover{
-        transform: scale(1.2);
-        text-shadow: .2rem .2rem 2rem rgba(#fff,.2);
-    }
+  &:hover {
+    transform: scale(1.2);
+    text-shadow: 0.2rem 0.2rem 2rem rgba(#fff, 0.2);
+  }
 }
 
-.heading-tertiary{
-    font-size: 2rem;
-    text-transform: uppercase;
-    font-weight: 700;
+.heading-tertiary {
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
-.paragraph{
-    font-size: 1.6rem;
-    &:not(:last-child){
-        margin-bottom: 3rem;
-    }
+.paragraph {
+  font-size: 1.6rem;
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
+
+a.nostyle:link {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: auto;
+}
+
+a.nostyle:visited {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: auto;
 }

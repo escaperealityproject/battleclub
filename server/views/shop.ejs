@@ -33,10 +33,10 @@
       <div class="header__text-box">
         <h1 class="heading-primary">
           <span class="heading-primary--main">
-            Battle Club
+            Shop
           </span>
           <span class="heading-primary--sub">
-            Unleash your inner beast
+            Contact us using the details below to buy our stuff
           </span>
         </h1>
         <a href="/blogs" class="btn btn--white">
@@ -46,27 +46,18 @@
     </header>
 
     <section class="section-shop">
-      <% var i=0 %> <% [1,2,3,4,5,6,7,8].forEach(function(blog){ %> <%
-      if(i%3==0){ %>
+      <% var i=0 %> <% shops.forEach(function(shop){ %> <% if(i%3==0){ %>
       <div class="row">
         <% } %>
         <div class="col-1-of-3">
-          <div class="feature-box">
-            <img
-              class="feature-box__image"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSSxrLYeh2yJlIZgUcnrzDW1Fk5h5sgI0Y7yJrhu5TOxA00cbZyA"
-              alt=""
-              style="max-width: 100%"
-            />
-            <h3 class="heading-tertiary u-margin-bottom-small">
-              Bubble Soccer
-            </h3>
-            <p class="feature-box__text">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
-              iste perferendis voluptatem quod ex porro, quia culpa totam
-              maiores perspiciatis?
-            </p>
-          </div>
+          <a href="" class="nostyle">
+            <div class="feature-box-shop">
+              <img class="feature-box__image" src=" <%= shop.image%> " alt="" />
+              <h3 class="heading-tertiary u-margin-bottom-small">
+                <%= shop.title%>
+              </h3>
+            </div>
+          </a>
         </div>
         <% i=i+1 %> <% if((i)%3==0){ %>
       </div>
@@ -88,7 +79,7 @@
             >
               email : battleclub55@gmail.com
               <br />
-              Phone : 8752649356
+              Phone : 9814786814
             </h3>
           </div>
         </div>

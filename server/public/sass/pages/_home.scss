@@ -15,7 +15,7 @@
       rgba($color-primary-light, 0.8),
       rgba($color-primary-dark, 0.8)
     ),
-    url("/images/hero2.jpg");
+    url('/images/hero2.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -37,7 +37,7 @@
   margin-top: -15rem;
 
   @include respond(tab-port) {
-    padding: 10rem 0;
+    padding: 15rem 0 10rem 0;
   }
 }
 
@@ -61,7 +61,7 @@
 }
 
 .section-book {
-  padding: 15rem 0;
+  padding: 15rem 10rem 30rem 10rem;
   background-image: linear-gradient(
     to right top,
     rgba($color-primary-light, 0.8),
@@ -115,6 +115,10 @@
   }
 }
 
+.footer {
+  padding: 2rem 0rem;
+}
+
 .slideshow {
   position: relative;
   height: 100%;
@@ -157,7 +161,7 @@ Slider 2
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
 
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     left: -1%;
     bottom: -1%;
@@ -222,7 +226,7 @@ Slider 2
         cursor: pointer;
 
         &:before {
-          content: "";
+          content: '';
           width: 4px;
           height: 4px;
           background: #fff;
@@ -264,11 +268,11 @@ Arrows
   height: 40px;
 
   &:before {
-    content: "";
+    content: '';
     width: 30px;
     height: 30px;
     background-color: #fff;
-    mask-image: url("http://cdn.flaticon.com/svg/22/22086.svg");
+    mask-image: url('http://cdn.flaticon.com/svg/22/22086.svg');
     display: block;
     opacity: 0.5;
     transition: all 0.5s ease-out;

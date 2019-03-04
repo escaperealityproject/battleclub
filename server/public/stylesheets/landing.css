@@ -72,7 +72,7 @@ body {
     animation-duration: 0.9s; }
     @media (max-width: 37.5em) {
       .heading-primary--sub {
-        letter-spacing: .5rem; } }
+        letter-spacing: 0.5rem; } }
 
 body {
   font-family: lato, arial;
@@ -90,8 +90,8 @@ body {
   background-image: linear-gradient(to right, rgba(255, 68, 58, 0.8), rgba(204, 54, 46, 0.8));
   -webkit-background-clip: text;
   color: rgba(0, 0, 0, 0);
-  letter-spacing: .2rem;
-  transition: all .3s; }
+  letter-spacing: 0.2rem;
+  transition: all 0.3s; }
   @media (max-width: 56.25em) {
     .heading-secondary {
       font-size: 3rem; } }
@@ -111,6 +111,16 @@ body {
   font-size: 1.6rem; }
   .paragraph:not(:last-child) {
     margin-bottom: 3rem; }
+
+a.nostyle:link {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: auto; }
+
+a.nostyle:visited {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: auto; }
 
 .u-center-text {
   text-align: center; }
@@ -282,8 +292,26 @@ body {
   vertical-align: center;
   border: 5px;
   box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.3);
-  transition: transform .3s; }
+  transition: transform 0.3s; }
+  .feature-box__image {
+    max-width: 100%;
+    max-height: 25rem; }
   .feature-box:hover {
+    transform: translateY(-1.5rem) scale(1.1); }
+
+.feature-box-shop {
+  background-color: rgba(255, 68, 58, 0.6);
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  vertical-align: center;
+  border: 5px;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s; }
+  .feature-box-shop__image {
+    max-width: 100%;
+    max-height: 25rem; }
+  .feature-box-shop:hover {
     transform: translateY(-1.5rem) scale(1.1); }
 
 .card {
@@ -383,7 +411,7 @@ body {
   margin-top: -15rem; }
   @media (max-width: 56.25em) {
     .section-shop {
-      padding: 10rem 0; } }
+      padding: 15rem 0 10rem 0; } }
 
 .section-tours {
   padding: 25rem 0;
@@ -402,7 +430,7 @@ body {
       padding: 20rem 0; } }
 
 .section-book {
-  padding: 15rem 0;
+  padding: 15rem 10rem 30rem 10rem;
   background-image: linear-gradient(to right top, rgba(255, 68, 58, 0.8), rgba(204, 54, 46, 0.8)); }
 
 .book {
@@ -426,6 +454,9 @@ body {
     @media (max-width: 56.25em) {
       .book__form {
         width: 100%; } }
+
+.footer {
+  padding: 2rem 0rem; }
 
 .slideshow {
   position: relative;
@@ -464,7 +495,7 @@ Slider 2
   transform: translate(-50%, -50%);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4); }
   .slider-2:before {
-    content: "";
+    content: '';
     position: absolute;
     left: -1%;
     bottom: -1%;
@@ -514,7 +545,7 @@ Slider 2
         z-index: 1;
         cursor: pointer; }
         .slider-2 .slick-dots li button:before {
-          content: "";
+          content: '';
           width: 4px;
           height: 4px;
           background: #fff;
@@ -547,7 +578,7 @@ Arrows
   width: 40px;
   height: 40px; }
   .slick-arrow:before {
-    content: "";
+    content: '';
     width: 30px;
     height: 30px;
     background-color: #fff;

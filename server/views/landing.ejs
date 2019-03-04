@@ -1,99 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
+      rel="stylesheet"
+    />
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
-
-    <%# <link rel="stylesheet" href="css/icon-font.css"> %>
-    <link rel="stylesheet" href="/stylesheets/landing.css">
-    <%# <link rel="shortcut icon" type="image/png" href="img/favicon.png"> %>
+    <%#
+    <link rel="stylesheet" href="css/icon-font.css" />
+    %>
+    <link rel="stylesheet" href="/stylesheets/landing.css" />
+    <%#
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+    %>
     <title>Battle Club</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- <div class="header__logo-box"> -->
-        <a href="/">
-            <img src="/images/logo-white.png" alt="Battle Club" class="header__logo">
-        </a>
+    <a href="/">
+      <img
+        src="/images/logo-white.png"
+        alt="Battle Club"
+        class="header__logo"
+      />
+    </a>
     <!-- </div> -->
     <header class="header">
-        <div class="header__text-box">
-            <h1 class="heading-primary">
-                <span class="heading-primary--main">
-                    Battle Club
-                </span>
-                <span class="heading-primary--sub">
-                    Unleash your inner beast
-                </span>
-            </h1>
-            <a href="/blogs" class="btn btn--white">
-                Watch us in action!
-            </a>
-        </div>
+      <div class="header__text-box">
+        <h1 class="heading-primary">
+          <span class="heading-primary--main">
+            Battle Club
+          </span>
+          <span class="heading-primary--sub">
+            Unleash your inner beast
+          </span>
+        </h1>
+        <a href="/blogs" class="btn btn--white">
+          Watch us in action!
+        </a>
+        <a href="/shop" class="btn btn--white">
+          Buy our stuff!!
+        </a>
+      </div>
     </header>
 
     <main>
-        <section class="section-about">
-            <div class="u-center-text u-margin-bottom-big">
-                <h2 class="heading-secondary">
-                    Get to know us
-                </h2>
+      <section class="section-about">
+        <div class="u-center-text u-margin-bottom-big">
+          <h2 class="heading-secondary">
+            Get to know us
+          </h2>
+        </div>
+        <div class="row">
+          <div class="col-1-of-2">
+            <div style="width: 100%; padding-bottom: 100%" data-simple-slider>
+              <% slides.forEach(function(slide){ %>
+              <img
+                class="fill-image"
+                src="<%=slide.image%>"
+                style="height:100%"
+              />
+              <% }) %>
             </div>
+            <script src="/scripts/slideshow.js"></script>
+            <script>
+              simpleslider.getSlider();
+            </script>
+          </div>
+          <div class="col-1-of-2">
+            <p class="paragraph">
+              Getting exhausted from the 8 to 5 classes has been a ritual since
+              the evolution of mankind. And after the 5 pm, when the real world
+              starts l, we are too tired to leave the rooms and go out and play
+              or do some strenuous physical excercises.So we aim at introducing
+              some recreational activities which can help the people to
+              channelise their energy in the right direction, have fun and play
+              games like never before. Till now , we have introduced one game ,
+              “ Bubble soccer” but we are working towards bringing many others
+              and make them accessible to the people.
+            </p>
+            <h3 class="heading-tertiary u-margin-bottom-small">
+              About Us
+            </h3>
+            <p class="paragraph">
+              The motto by which we abide is bringing a smile on the faces of
+              everyone. In this fast moving world,where the priorities of the
+              people have undergone a drastic change , the element which we miss
+              out is fun and recreation . And that’s where battle club comes in
+              . We are a group of people who aim at taking away that boredom and
+              lethargic lifestyle by introducing some recreational and stress
+              busting activities for the first time in India.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="section-features">
+        <div class="row">
+          <div class="col-1-of-2">
+            <div class="feature-box">
+              <img class="feature-box__image" src="/images/hero1.jpg" alt="" />
+              <h3 class="heading-tertiary u-margin-bottom-small">
+                Bubble Soccer
+              </h3>
+              <p class="feature-box__text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Delectus iste perferendis voluptatem quod ex porro, quia culpa
+                totam maiores perspiciatis?
+              </p>
             </div>
-            <div class="row">
-                <div class="col-1-of-2">
-                    <p class="paragraph">
-                        Getting exhausted from the 8 to 5 classes has been a ritual since the evolution of mankind. And after the 5 pm, when the real world starts l, we are too tired to leave the rooms and go out and play or do some strenuous physical excercises.So we aim at introducing some recreational activities which can help the people to channelise their energy in the right direction, have fun and play games like never before. Till now , we have introduced one game , “ Bubble soccer” but we are working towards bringing many others and make them accessible to the people.
-                    </p>
-                    <h3 class="heading-tertiary u-margin-bottom-small">
-                        About Us
-                    </h3>
-                    <p class="paragraph">
-                        The motto by which we abide is bringing a smile on the faces of everyone. In this fast moving world,where the priorities of the people have undergone a drastic change , the element which we miss out is fun and recreation . And that’s where battle club comes in . We are a group of people who aim at taking away that boredom and lethargic lifestyle by introducing some recreational and stress busting activities for the first time in India.
-                    </p>
-                </div>
-                <div class="col-1-of-2">
-                    <div style="width: 100%; padding-bottom: 100%" data-simple-slider>
-                        <%    blogs.forEach(function(blog){ %>
-                        <a href="/blogs/<%= blog._id %>">
-                            <img class="fill-image" src="<%=blog.hero_image%>" />
-                        </a>
-                        <%  })  %>
-                    </div>
-                    <script src="/scripts/slideshow.js"></script>
-                    <script>
-                        simpleslider.getSlider();
-                    </script>
-                </div>
-        </section>
-        <section class="section-features">
-            <div class="row">
-                <div class="col-1-of-2">
-                    <div class="feature-box">
-                        <img class="feature-box__image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSSxrLYeh2yJlIZgUcnrzDW1Fk5h5sgI0Y7yJrhu5TOxA00cbZyA" alt="">
-                        <h3 class="heading-tertiary u-margin-bottom-small">
-                            Bubble Soccer
-                        </h3>
-                        <p class="feature-box__text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus iste perferendis voluptatem quod ex porro, quia culpa totam maiores perspiciatis?
-                        </p>
-                    </div>
-                </div>
-                <div class="col-1-of-2">
-                    <div class="feature-box">
-                        <img class="feature-box__image" src="" alt="">
-                        <h3 class="heading-tertiary u-margin-bottom-small">
-                            Bubble Soccer
-                        </h3>
-                        <p class="feature-box__text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus iste perferendis voluptatem quod ex porro, quia culpa totam maiores perspiciatis?
-                        </p>
-                    </div>
-                </div>
-                <!-- <div class="col-1-of-4">
+          </div>
+          <div class="col-1-of-2">
+            <div class="feature-box">
+              <img class="feature-box__image" src="/images/hero5.jpg" alt="" />
+              <h3 class="heading-tertiary u-margin-bottom-small">
+                HoverBoards
+              </h3>
+              <p class="feature-box__text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Delectus iste perferendis voluptatem quod ex porro, quia culpa
+                totam maiores perspiciatis?
+              </p>
+            </div>
+          </div>
+          <!-- <div class="col-1-of-4">
                     <div class="feature-box">
                         <img class="feature-box__image" src="" alt="">
                         <h3 class="heading-tertiary u-margin-bottom-small">
@@ -115,86 +148,131 @@
                         </p>
                     </div>
                 </div> -->
+        </div>
+      </section>
+      <section class="section-stories">
+        <div class="u-center-text u-margin-bottom-big">
+          <h2 class="heading-secondary">
+            See what people said about us!!
+          </h2>
+        </div>
+        <div class="row">
+          <div class="story">
+            <div class="story__shape">
+              <img
+                src="https://www.fakepersongenerator.com/Face/male/male20151086255997924.jpg"
+                alt="person pic"
+                class="story__img"
+              />
+              <figcaption class="story__caption">abndd fasfasd</figcaption>
             </div>
-        </section>
-        <section class="section-stories">
-            <div class="u-center-text u-margin-bottom-big">
-                <h2 class="heading-secondary">
-                    See what people said about us!!
-                </h2>
+            <div class="story__text">
+              <h3 class="heading-tertiary u-margin-bottom-small">
+                It was amazing
+              </h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Cupiditate ut suscipit tempora ab velit illo placeat quisquam
+                mollitia labore minima!
+              </p>
             </div>
-            <div class="row">
-                <div class="story">
-                    <div class="story__shape">
-                        <img src="https://www.fakepersongenerator.com/Face/male/male20151086255997924.jpg" alt="person pic" class="story__img">
-                        <figcaption class="story__caption">abndd fasfasd</figcaption>
-                    </div>
-                    <div class="story__text">
-                        <h3 class="heading-tertiary u-margin-bottom-small">
-                            It was amazing
-                        </h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ut suscipit tempora ab velit illo placeat quisquam mollitia labore minima!
-                        </p>
-                    </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="story">
+            <div class="story__shape">
+              <img
+                src="https://www.fakepersongenerator.com/Face/male/male20151086255997924.jpg"
+                alt="person pic"
+                class="story__img"
+              />
+              <figcaption class="story__caption">abndd fasfasd</figcaption>
+            </div>
+            <div class="story__text">
+              <h3 class="heading-tertiary u-margin-bottom-small">
+                It was amazing
+              </h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Cupiditate ut suscipit tempora ab velit illo placeat quisquam
+                mollitia labore minima!
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="u-center-text u-margin-top-huge">
+          <a href="#" class="btn-text">View more reviews</a>
+        </div>
+      </section>
+      <section class="section-book">
+        <div class="row">
+          <div class="book">
+            <div class="book__form">
+              <form class="form" action="/contact" method="post">
+                <div
+                  class="u-center-text u-margin-top-medium u-margin-bottom-medium"
+                >
+                  <h2 class="heading-secondary">
+                    Contact Us
+                  </h2>
                 </div>
-            </div>
-            <div class="row">
-                <div class="story">
-                    LOL
+                <div class="form__group">
+                  <input
+                    type="text"
+                    class="form__input"
+                    placeholder="Name"
+                    name="name"
+                    required
+                  />
                 </div>
-            </div>
-            <div class="u-center-text u-margin-top-huge"><a href="/review" class="btn-text">View more reviews</a></div>
-        </section>
-        <section class="section-book">
-            <div class="row">
-                <div class="book">
-                    <div class="book__form">
-                        <form class="form" action="/contact" method="post">
-                            <div class="u-center-text u-margin-top-medium u-margin-bottom-medium">
-                                <h2 class="heading-secondary">
-                                    Contact Us
-                                </h2>
-                            </div>
-                            <div class="form__group">
-                                <input type="text" class="form__input" placeholder="Name" name="name" required>
-                            </div>
-                            <div class="form__group">
-                                <input type="text" class="form__input" placeholder="Phone No." name="number">
-                            </div>
-                            <div class="form__group">
-                                <input type="email" class="form__input" placeholder="email" name="email" required>
-                            </div>
-                            <div class="form__group"><button class="btn">Submit</button></div>
-                        </form>
-                    </div>
+                <div class="form__group">
+                  <input
+                    type="text"
+                    class="form__input"
+                    placeholder="Phone No."
+                    name="number"
+                  />
                 </div>
+                <div class="form__group">
+                  <input
+                    type="email"
+                    class="form__input"
+                    placeholder="email"
+                    name="email"
+                    required
+                  />
+                </div>
+                <div class="form__group">
+                  <button class="btn">Submit</button>
+                </div>
+              </form>
             </div>
-        </section>
-
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
-        <div class="u-center-text u-margin-bottom-big">
-            <h2 class="heading-secondary">
-                Ways to connect!
-            </h2>
+      <div class="u-center-text u-margin-bottom-big">
+        <h2 class="heading-secondary">
+          Ways to connect!
+        </h2>
+      </div>
+      <div class="row">
+        <div class="story">
+          <div class="story__text">
+            <h3
+              class="heading-tertiary u-margin-bottom-small"
+              style="text-align:center"
+            >
+              email : battleclub55@gmail.com
+              <br />
+              Phone : 9814786814
+            </h3>
+          </div>
         </div>
-        <div class="row">
-            <div class="story">
-                <div class="story__text">
-                    <h3 class="heading-tertiary u-margin-bottom-small" style="text-align:center">
-                        email : battleclub55@gmail.com
-                        <br>
-                        Phone : 8752649356
-                    </h3>
-                </div>
-            </div>
-        </div>
-        <row>
-        </row>
+      </div>
+      <row> </row>
     </footer>
-
-</body>
-
+  </body>
 </html>
