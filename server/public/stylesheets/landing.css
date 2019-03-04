@@ -427,7 +427,8 @@ a.nostyle:visited {
   margin-top: -15vh; }
   @media (max-width: 56.25em) {
     .section-stories {
-      padding: 20rem 0; } }
+      padding: 20rem 0;
+      padding-top: 25rem; } }
 
 .section-book {
   padding: 15rem 10rem 30rem 10rem;
@@ -457,6 +458,9 @@ a.nostyle:visited {
 
 .footer {
   padding: 2rem 0rem; }
+  @media (max-width: 56.25em) {
+    .footer {
+      padding-top: 15rem; } }
 
 .slideshow {
   position: relative;
